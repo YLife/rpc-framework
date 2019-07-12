@@ -7,4 +7,9 @@ public interface CommonConst {
         String PARENT_PATH = "/server";// 父路径
     }
 
+    interface ServerConst {
+        String HOST = "127.0.0.1";
+        int PORT = 8080;
+    }
+
 }
