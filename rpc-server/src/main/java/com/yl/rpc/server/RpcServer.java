@@ -27,7 +27,7 @@ public class RpcServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
-                                    .addLast(new RpcHandler());
+                                    .addLast(new RpcServerHandler());
                         }
                     });
             ChannelFuture future = bootstrap.bind(CommonConst.ServerConst.HOST, CommonConst.ServerConst.PORT).sync();
@@ -36,5 +36,10 @@ public class RpcServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        RpcServer server = new RpcServer();
+        server.start();
     }
 }

@@ -9,6 +9,7 @@
         <module>rpc-registry</module>
         <module>rpc-common</module>
         <module>rpc-server</module>
+        <module>rpc-client</module>
     </modules>
     <packaging>pom</packaging>
 
