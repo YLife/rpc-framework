@@ -15,4 +15,49 @@ import com.yl.message.RpcMessage;
  */
 public class RequestMessage implements RpcMessage {
 
+    private String requestId;
+    private String className;
+    private String methodName;
+    private Class<?>[] paramterTypes;
+    private Object[] paramters;
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public Class<?>[] getParamterTypes() {
+        return paramterTypes;
+    }
+
+    public void setParamterTypes(Class<?>[] paramterTypes) {
+        this.paramterTypes = paramterTypes;
+    }
+
+    public Object[] getParamters() {
+        return paramters;
+    }
+
+    public void setParamters(Object[] paramters) {
+        this.paramters = paramters;
+    }
 }

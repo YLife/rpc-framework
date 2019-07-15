@@ -1,5 +1,7 @@
 package com.yl.rpc.client;
 
+import com.yl.coder.RpcDecoder;
+import com.yl.coder.RpcEncoder;
 import com.yl.constance.CommonConst;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -23,6 +25,8 @@ public class RpcClient {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         socketChannel.pipeline()
+                                .addLast(new RpcEncoder())
+                                .addLast(new RpcDecoder())
                                 .addLast(new RpcClientHandler());
                     }
                 });

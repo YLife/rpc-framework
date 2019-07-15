@@ -1,5 +1,7 @@
 package com.yl.rpc.server;
 
+import com.yl.coder.RpcDecoder;
+import com.yl.coder.RpcEncoder;
 import com.yl.constance.CommonConst;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -27,6 +29,8 @@ public class RpcServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline()
+                                    .addLast(new RpcEncoder())
+                                    .addLast(new RpcDecoder())
                                     .addLast(new RpcServerHandler());
                         }
                     });
