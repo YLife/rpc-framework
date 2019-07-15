@@ -15,4 +15,23 @@ import com.yl.message.RpcMessage;
  */
 public class ResponseMessage implements RpcMessage {
 
+    private String responseId;
+    private Object result;
+
+    public String getResponseId() {
+        return responseId;
+    }
+
+    public void setResponseId(String responseId) {
+        this.responseId = responseId;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
+    }
+
 }

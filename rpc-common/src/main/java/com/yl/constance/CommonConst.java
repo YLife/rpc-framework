@@ -12,4 +12,9 @@ public interface CommonConst {
         int PORT = 8080;
     }
 
+    interface Coder {
+        // 最小可读数据包长度
+        int MAIN_LENGTH = 4;
+    }
+
 }
