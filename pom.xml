@@ -10,6 +10,8 @@
         <module>rpc-common</module>
         <module>rpc-server</module>
         <module>rpc-client</module>
+        <module>rpc-driver</module>
+        <module>rpc-app</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -33,6 +35,12 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.6.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.18.RELEASE</version>
         </dependency>
     </dependencies>
     <build>
