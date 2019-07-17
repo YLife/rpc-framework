@@ -12,6 +12,12 @@ import java.util.List;
 
 public class RpcDecoder extends ByteToMessageDecoder {
 
+    private Class<?> clazz;
+
+    public RpcDecoder(Class<?> clazz) {
+        this.clazz = clazz;
+    }
+
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
         // 校验可读长度是否大于最小可读数据长度
@@ -24,7 +30,8 @@ public class RpcDecoder extends ByteToMessageDecoder {
         // 空包、半包都不做处理
         if (length <= 0) {
             channelHandlerContext.close();
-        } else if (byteBuf.readableBytes() < length) {
+        }
+        if (byteBuf.readableBytes() < length) {
             byteBuf.resetReaderIndex();
             return;
         }
@@ -32,9 +39,9 @@ public class RpcDecoder extends ByteToMessageDecoder {
         byte[] bytes = new byte[length];
         byteBuf.readBytes(bytes);
         // 将字节数组反序列化为对象
-        ResponseMessage responseMessage = BaseServerLoader.load(RpcSerialization.class)
-                .deserialize(bytes, ResponseMessage.class);
-        list.add(responseMessage);
+        Object object = BaseServerLoader.load(RpcSerialization.class)
+                .deserialize(bytes, clazz);
+        list.add(object);
     }
 
 }

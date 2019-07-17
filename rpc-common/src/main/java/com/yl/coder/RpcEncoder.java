@@ -7,11 +7,11 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
-public class RpcEncoder extends MessageToByteEncoder<RpcMessage> {
+public class RpcEncoder extends MessageToByteEncoder {
 
     @Override
-    protected void encode(ChannelHandlerContext channelHandlerContext, RpcMessage rpcMessage, ByteBuf byteBuf) throws Exception {
-        byte[] bytes = BaseServerLoader.load(RpcSerialization.class).serialize(rpcMessage);
+    protected void encode(ChannelHandlerContext channelHandlerContext, Object object, ByteBuf byteBuf) throws Exception {
+        byte[] bytes = BaseServerLoader.load(RpcSerialization.class).serialize(object);
         byteBuf.writeInt(bytes.length);
         byteBuf.writeBytes(bytes);
     }

@@ -9,7 +9,7 @@ public interface CommonConst {
 
     interface ServerConst {
         String HOST = "127.0.0.1";
-        int PORT = 8080;
+        int PORT = 39999;
     }
 
     interface Coder {

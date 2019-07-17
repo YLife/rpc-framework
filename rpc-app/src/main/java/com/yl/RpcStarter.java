@@ -9,4 +9,5 @@ public class RpcStarter {
         RpcServer rpcServer = new RpcServer(new HelloRpc());
         rpcServer.start();
     }
+
 }

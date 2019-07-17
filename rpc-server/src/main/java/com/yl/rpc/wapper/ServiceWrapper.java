@@ -10,7 +10,7 @@ package com.yl.rpc.wapper;
  * -------------------------------------------------------------
  * 2019/7/16      yanglun            v1.0.0              修改原因
  */
-public class ServiceWapper {
+public class ServiceWrapper {
 
     private String serviceCode;// 服务名
     private Class<?> clazz;// 类名
