@@ -19,8 +19,6 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class RpcServer {
 
@@ -61,7 +59,7 @@ public class RpcServer {
                     });
             ChannelFuture future = bootstrap.bind(CommonConst.ServerConst.HOST, CommonConst.ServerConst.PORT).sync();
             future.channel().closeFuture();
-        } catch (InterruptedException e) {
+        } catch (Exception e){
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
