@@ -4,14 +4,14 @@ import com.yl.spi.BaseServerLoader;
 
 public class RegistryFactory {
 
-    private Registry registry;
-    private Boolean lock = Boolean.TRUE;
+    private static RpcRegistry registry;
+    private static Boolean lock = Boolean.TRUE;
 
-    public Registry getInstance() {
+    public static RpcRegistry getInstance() {
         if (registry == null) {
             synchronized (lock) {
                 if (Boolean.FALSE == lock) {
-                    registry = BaseServerLoader.load(Registry.class);
+                    registry = BaseServerLoader.load(RpcRegistry.class);
                     lock = Boolean.TRUE;
                 }
             }
