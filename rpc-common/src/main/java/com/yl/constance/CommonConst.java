@@ -4,7 +4,9 @@ public interface CommonConst {
 
     // zookeeper相关常量
     interface ZKConst {
+        String ZOOKEEPER_ADDRESS = "";// zookeeper地址
         String PARENT_PATH = "/server";// 父路径
+        int TIME_OUT = 5000;// 超时时间
     }
 
     interface ServerConst {
