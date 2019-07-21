@@ -19,4 +19,9 @@ public interface CommonConst {
         int MAIN_LENGTH = 4;
     }
 
+    enum LoadBalance {
+        RANDOM, // 随机
+        CONSISTENCY_HASH // 一致性hash
+    }
+
 }
