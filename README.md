@@ -2,7 +2,7 @@
 这些天复习netty，正好也在研究公司的rpc框架，因此即兴开发了rpc-framework这款简易的rpc框架。  
 整体架构，类似dubbo，如图：  
 
-![Image discription](https://github.com/YLife/rpc-framework/blob/master/image/dubbo.png)
+![如未看到图片，可能是少儿不宜](https://github.com/YLife/rpc-framework/blob/master/image/dubbo.png)图片来自dubbo
 
 技术选型：  
 &nbsp;&nbsp;&nbsp;&nbsp;  rpc通信框架：netty；  
@@ -20,7 +20,7 @@
 缺陷：  
 &nbsp;&nbsp;&nbsp;&nbsp;1、很多课配置化的东西（服务器信息、zk地址等）未实现配置化；  
 &nbsp;&nbsp;&nbsp;&nbsp;2、服务熔断、限流这块也未引入；  
-&nbsp;&nbsp;&nbsp;&nbsp;3、由于时间原因，很多代码解耦、设计上可能还有很多课优化的地方；  
+&nbsp;&nbsp;&nbsp;&nbsp;3、由于时间原因，很多代码解耦、设计上可能还有很多可优化的地方；  
 感悟：  
 &nbsp;&nbsp;&nbsp;&nbsp;虽然这只是个建议的rpc框架，但通过这次的开发，对整个rpc通信的原理了解更透彻了，平常很少考虑的并发问题也在此得到了练习。
 哈哈，其实还有一点，通过写这些，才发现自己有多么菜，真的是个弟弟，原谅我此处不知道怎么打笑脸。无论如何，一点一滴进步吧，后面有时间再来完善此框架。
