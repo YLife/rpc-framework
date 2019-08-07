@@ -17,5 +17,4 @@ public interface RpcThreadPool {
 
     // 获取业务线程池
     Executor getExecutor();
-
 }

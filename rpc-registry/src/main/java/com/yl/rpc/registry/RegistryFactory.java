@@ -5,7 +5,7 @@ import com.yl.spi.BaseServerLoader;
 public class RegistryFactory {
 
     private static RpcRegistry registry;
-    private static Boolean lock = Boolean.TRUE;
+    private static Boolean lock;
 
     public static RpcRegistry getInstance() {
         if (registry == null) {
@@ -17,5 +17,9 @@ public class RegistryFactory {
             }
         }
         return registry;
+    }
+
+    static {
+        lock = Boolean.FALSE;
     }
 }
