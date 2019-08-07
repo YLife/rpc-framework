@@ -39,8 +39,9 @@ public class RpcServer {
         createServiceWapper();
         // 启动Netty服务器
         startServer();
-        System.out.println("服务端启动成功，绑定端口：" + CommonConst.ServerConst.PORT);
         // 注册服务器节点
+        registryServerInfo();
+        System.out.println("服务端启动成功，绑定端口：" + CommonConst.ServerConst.PORT);
     }
 
     // 启动netty服务器
@@ -118,7 +119,7 @@ public class RpcServer {
     private void registryServerInfo() throws Exception {
         RpcRegistry registry = RegistryFactory.getInstance();
         ZooKeeper zooKeeper = registry.doConnection();
-        registry.doRegistry(zooKeeper, CommonConst.ServerConst.HOST
+        registry.doRegistry(CommonConst.ServerConst.HOST
                 + ":" + CommonConst.ServerConst.PORT);
     }
 

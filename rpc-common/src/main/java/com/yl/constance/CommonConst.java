@@ -4,8 +4,8 @@ public interface CommonConst {
 
     // zookeeper相关常量
     interface ZKConst {
-        String ZOOKEEPER_ADDRESS = "";// zookeeper地址
-        String PARENT_PATH = "/server";// 父路径
+        String ZOOKEEPER_ADDRESS = "192.168.243.136:2181,192.168.243.133:2181,192.168.243.134:2181";// zookeeper地址
+        String PARENT_PATH = "/servers";// 父路径
         int TIME_OUT = 5000;// 超时时间
     }
 
@@ -23,5 +23,4 @@ public interface CommonConst {
         RANDOM, // 随机
         CONSISTENCY_HASH // 一致性hash
     }
-
 }

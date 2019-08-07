@@ -47,6 +47,8 @@ public class ZooKeeperRegistry implements RpcRegistry {
             latch.await();
             zooKeeperCache.put(CommonConst.ZKConst.ZOOKEEPER_ADDRESS, zooKeeper);
         }
+        // 服务订阅
+        doSubscrib();
         return zooKeeper;
     }
 

@@ -16,7 +16,7 @@ public class WorkerThreadPool implements RpcThreadPool {
     // 默认创建当前核心数*2大小的线程池
     public WorkerThreadPool() {
         nThreads = Runtime.getRuntime().availableProcessors() << 1;
-        queneSize = 10;// 此处默认值没想好，后续看看去多大更科学
+        queneSize = 10;// TODO 此处默认值没想好，后续看看去多大更科学
     }
 
     // 创建自定义大小的线程池
@@ -31,5 +31,4 @@ public class WorkerThreadPool implements RpcThreadPool {
                 new LinkedBlockingDeque<Runnable>(queneSize));
         return executor;
     }
-
 }

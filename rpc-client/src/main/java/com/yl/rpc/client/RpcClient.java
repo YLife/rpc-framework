@@ -5,6 +5,8 @@ import com.yl.coder.RpcEncoder;
 import com.yl.constance.CommonConst;
 import com.yl.message.impl.RequestMessage;
 import com.yl.message.impl.ResponseMessage;
+import com.yl.rpc.registry.RegistryFactory;
+import com.yl.rpc.registry.RpcRegistry;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -18,10 +20,11 @@ public class RpcClient {
     private ResponseMessage responseMessage;
     // 线程等待锁，保证服务端响应后，再返回客户端
     private CountDownLatch latch = new CountDownLatch(1);
+    private RpcRegistry registry;
 
     public ResponseMessage sendMessage(RequestMessage rpcMessage) throws Exception {
         // 建立连接
-        ChannelFuture future = establishConneciton();
+        ChannelFuture future = establishConnection(rpcMessage.getMethodName());
         future.channel().writeAndFlush(rpcMessage);
         // 等待服务端响应
         latch.await();
@@ -29,7 +32,17 @@ public class RpcClient {
     }
 
     // 建立连接
-    private ChannelFuture establishConneciton() throws InterruptedException {
+    private ChannelFuture establishConnection(String serviceName) throws Exception {
+        registry = RegistryFactory.getInstance();
+        // 建立zk连接
+        registry.doConnection();
+        // 发现服务
+        String serverInfo = registry.discoverServer(CommonConst.LoadBalance.RANDOM, serviceName);
+        if (serverInfo == null || serverInfo.length() == 0) {
+            System.out.println("暂无可用节点！");
+        }
+        String host = serverInfo.split(":")[0];
+        String port = serverInfo.split(":")[1];
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(bossGroup)
@@ -43,7 +56,7 @@ public class RpcClient {
                                 .addLast(new RpcClientHandler());
                     }
                 });
-        ChannelFuture future = bootstrap.connect(CommonConst.ServerConst.HOST, CommonConst.ServerConst.PORT).sync();
+        ChannelFuture future = bootstrap.connect(host, Integer.parseInt(port)).sync();
         return future;
     }
 
